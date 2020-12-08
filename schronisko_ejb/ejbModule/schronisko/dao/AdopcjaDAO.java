@@ -10,7 +10,6 @@ import schronisko.entities.Adopcja;
 public class AdopcjaDAO {
 	
 	private final static String UNIT_NAME = "jsfcourse-simplePU";
-
 	@PersistenceContext
 	EntityManager em;
 public void create(Adopcja adopcja) {

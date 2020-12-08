@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta charset="utf-8"/>
+	<title>JSF 06 - EJB, bazy danych (mapowanie
+		obiektowo-relacyjne) (typchoroby)</title>
+</h:head>
+<h:body style="background-color: #eee; margin: 0.5em;">
+
+	<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
+		style="margin-bottom: 1em;">
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="data:" />
+				<p:inputText value="#{typchorobyListBB.nazwaChoroby}" />
+				<p:commandButton value="Szukaj" update="form-table" />
+			</h:panelGrid>
+		</h:form>
+	</p:panel>
+
+	<p:messages />
+
+	<h:form id="form-table" style="margin-bottom:1em;">
+
+		<p:commandButton value="Dodaj nową chorobę"
+			action="#{typchorobyListBB.typchorobyListBB()}" style="margin-bottom:1em;"/>
+
+		<p:dataTable value="#{schroniskoListBB.list}" var="p">
+
+			<p:column priority="5">
+				<f:facet name="header">
+					<h:outputText value="nazwa Choroby" />
+				</f:facet>
+				<h:outputText value="#{p.nazwaChoroby}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="czy uleczalna?" />
+				</f:facet>
+				<h:outputText value="#{p.czyUleczalna}" />
+			</p:column>
+
+			
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="opcje" />
+				</f:facet>
+
+				<p:commandButton value="Edytuj"
+					action="#{schroniskoListBB.editTypchoroby(p)}" />
+
+				<p:commandButton value="Usuń"
+					action="#{schroniskoListBB.deleteTypchoroby(p)}" update="@form" />
+
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+</h:body>
+</html>
