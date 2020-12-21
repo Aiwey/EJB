@@ -30,7 +30,7 @@ public class Typchoroby implements Serializable {
 	public Typchoroby() {
 	}
 
-	public int getIdChoroba() {
+	public Integer getIdChoroba() {
 		return this.idChoroba;
 	}
 
